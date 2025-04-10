@@ -1,0 +1,28 @@
+@startuml
+
+class Alumno {
+    - List<Materia> materiasAprobadas
+    - String nombre
+    + agregarAprobadas(Materia...): void
+    + aprobada(Materia): Boolean
+}
+
+class Materia {
+    - String nombre
+    - List<Materia> correlativas
+    + puedeCursar(Alumno): Boolean
+}
+
+class Inscripcion {
+    - List<Materia> materiasSolicitadas
+
+    + aprobada(Alumno): Boolean
+}
+
+
+Materia ..> Alumno
+Inscripcion ..> Alumno
+Alumno -->"*" Materia
+Inscripcion -->"*" Materia
+
+@enduml
